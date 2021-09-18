@@ -92,6 +92,7 @@ input[0].addEventListener('change', (e) => {
 })
 
 $('.startGame')[0].addEventListener('click',() => {
+    if (state.inputValue == '') state.inputValue = Math.floor(Math.random() * 20) + 4;
     let newEnglishData = EnglishDataShuffle.splice(1,state.inputValue);
     state.newEnglishData = newEnglishData;
     let getVietnameseDataLikeEnglish = []; // tìm kiếm các key tiếng việt dựa trên key tiếng anh đã lấy
