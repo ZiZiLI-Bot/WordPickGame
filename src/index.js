@@ -94,7 +94,6 @@ input[0].addEventListener('change', (e) => {
 $('.startGame')[0].addEventListener('click',() => {
     let newEnglishData = EnglishDataShuffle.splice(1,state.inputValue);
     state.newEnglishData = newEnglishData;
-    console.log(newEnglishData)
     let getVietnameseDataLikeEnglish = []; // tìm kiếm các key tiếng việt dựa trên key tiếng anh đã lấy
     for (let i in newEnglishData) {
         for (let j in VietnameseDataShuffle) {
@@ -113,7 +112,6 @@ const start = () => {  //khơi chạy
     $('.inputGame')[0].setAttribute('style','display: none;');
     $('.startGame')[0].setAttribute('style','display: none;');
     for (let i in state.newEnglishData) {  //render cac nut
-        console.log("index", i)
         const createBtn = document.createElement('button');
         createBtn.setAttribute('type', 'button')
         createBtn.classList.add('Data__item--btn','getElementEnglish')
