@@ -75,7 +75,7 @@ const times = {
     minute: 0, 
     seconds: 0,
 }
-var setTimes;
+var setTimes; // khởi tạo biến setInterval
 
 const EnglishDataShuffle = shuffle(englishData);
 const VietnameseDataShuffle = shuffle(vietnameseData);
@@ -88,30 +88,31 @@ input[0].addEventListener('change', (e) => {
         $('.error')[0].innerHTML = 'Min: 4; Max: 20';
     } else {
         $('.error')[0].innerHTML = '';
-        $('.startGame')[0].addEventListener('click',() => {
-            let newEnglishData = EnglishDataShuffle.splice(1,state.inputValue);
-            state.newEnglishData = newEnglishData;
-            let getVietnameseDataLikeEnglish = []; // tìm kiếm các key tiếng việt dựa trên key tiếng anh đã lấy
-            for (let i in newEnglishData) {
-                for (let j in VietnameseDataShuffle) {
-                    if (newEnglishData[i].key == VietnameseDataShuffle[j].key) {
-                        getVietnameseDataLikeEnglish.push(VietnameseDataShuffle[j])
-                    }
-                }
-            }
-            let newVietnameseData = shuffle(getVietnameseDataLikeEnglish);
-            state.newVietnameseData = newVietnameseData;
-            console.log(state)
-            start();
-        })
     }
+})
+
+$('.startGame')[0].addEventListener('click',() => {
+    let newEnglishData = EnglishDataShuffle.splice(1,state.inputValue);
+    state.newEnglishData = newEnglishData;
+    console.log(newEnglishData)
+    let getVietnameseDataLikeEnglish = []; // tìm kiếm các key tiếng việt dựa trên key tiếng anh đã lấy
+    for (let i in newEnglishData) {
+        for (let j in VietnameseDataShuffle) {
+            if (newEnglishData[i].key == VietnameseDataShuffle[j].key) {
+                getVietnameseDataLikeEnglish.push(VietnameseDataShuffle[j])
+            }
+        }
+    }
+    let newVietnameseData = shuffle(getVietnameseDataLikeEnglish);
+    state.newVietnameseData = newVietnameseData;
+    start();
 })
 
 const start = () => {  //khơi chạy
     setTimes = setInterval(startTime, 1000) // khởi chạy bộ đếm thời gian
     $('.inputGame')[0].setAttribute('style','display: none;');
     $('.startGame')[0].setAttribute('style','display: none;');
-    for (let i in state.newEnglishData) {  //tạo các nút trên màn hình
+    for (let i in state.newEnglishData) {  //render cac nut
         console.log("index", i)
         const createBtn = document.createElement('button');
         createBtn.setAttribute('type', 'button')
@@ -136,7 +137,7 @@ const getElement = () => { // lấy các element đã được tạo
     ListenerEvent();
 }
 
-const ListenerEvent = () => { 
+const ListenerEvent = () => { // lắng nghe sự kiện người dùng chọn các ô data
     for (let i in state.newEnglishData) {
         state.elementEnglish[i].addEventListener ('click', () => {
             state.keyActive1 = i;
@@ -168,10 +169,8 @@ function checking() {
     if (state.active1 === state.active2) {
         state.check = true
         state.wonCheck++
-        console.log(state.check)
     } else {
         state.check = false
-        console.log(state.check)
     }
     remove();
 }
@@ -201,7 +200,7 @@ function remove() {
 
            setTimeout (() => {
                 playAgain();
-           },2501)
+           },2001)
         }
     }
 }

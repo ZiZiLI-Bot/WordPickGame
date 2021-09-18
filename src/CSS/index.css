@@ -104,7 +104,7 @@ body {
     cursor: pointer;
     box-shadow: 1px 0 2px #1cefff;
     border-radius: 10px;
-    transition: all ease 0.3s;
+    transition: all ease .3s;
     font-size: 18px;
     position: relative;
 }
