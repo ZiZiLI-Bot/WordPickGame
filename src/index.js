@@ -83,29 +83,33 @@ const VietnameseDataShuffle = shuffle(vietnameseData);
 const input = $('input')  
 input[0].addEventListener('change', (e) => {
     let valueInput = parseInt(e.target.value)  //giá trị người dùng nhập
-    state.inputValue = valueInput
     if (valueInput < 4 || valueInput > 20) {
         $('.error')[0].innerHTML = 'Min: 4; Max: 20';
     } else {
         $('.error')[0].innerHTML = '';
+        state.inputValue = valueInput
     }
 })
 
 $('.startGame')[0].addEventListener('click',() => {
-    if (state.inputValue == '') state.inputValue = Math.floor(Math.random() * 16) + 4;
-    let newEnglishData = EnglishDataShuffle.splice(1,state.inputValue);
-    state.newEnglishData = newEnglishData;
-    let getVietnameseDataLikeEnglish = []; // tìm kiếm các key tiếng việt dựa trên key tiếng anh đã lấy
-    for (let i in newEnglishData) {
-        for (let j in VietnameseDataShuffle) {
-            if (newEnglishData[i].key == VietnameseDataShuffle[j].key) {
-                getVietnameseDataLikeEnglish.push(VietnameseDataShuffle[j])
+    if (state.inputValue < 4 || state.inputValue > 20) {
+        $('.error')[0].innerHTML = 'Min: 4; Max: 20';
+    } else {
+        if (state.inputValue == '') state.inputValue = Math.floor(Math.random() * 16) + 4;
+        let newEnglishData = EnglishDataShuffle.splice(1,state.inputValue);
+        state.newEnglishData = newEnglishData;
+        let getVietnameseDataLikeEnglish = []; // tìm kiếm các key tiếng việt dựa trên key tiếng anh đã lấy
+        for (let i in newEnglishData) {
+            for (let j in VietnameseDataShuffle) {
+                if (newEnglishData[i].key == VietnameseDataShuffle[j].key) {
+                    getVietnameseDataLikeEnglish.push(VietnameseDataShuffle[j])
+                }
             }
         }
+        let newVietnameseData = shuffle(getVietnameseDataLikeEnglish);
+        state.newVietnameseData = newVietnameseData;
+        start();
     }
-    let newVietnameseData = shuffle(getVietnameseDataLikeEnglish);
-    state.newVietnameseData = newVietnameseData;
-    start();
 })
 
 const start = () => {  //khơi chạy
