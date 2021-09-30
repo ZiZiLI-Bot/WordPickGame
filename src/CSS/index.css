@@ -1,163 +1,164 @@
 * {
-    font-family: 'Architects Daughter', cursive;
-    box-sizing: border-box;
+  font-family: "Architects Daughter", cursive;
+  box-sizing: border-box;
 }
 body {
-    height: 90vh;
-    background-image: url("../img/Background1.jpg");
-    backdrop-filter: blur(1px);
-    background-size: 194vh 125vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 0;
-    margin: 0;
-    position: relative;
+  height: 90vh;
+  background-image: url("../img/Background1.jpg");
+  backdrop-filter: blur(1px);
+  background-size: 194vh 125vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0;
+  margin: 0;
+  position: relative;
 }
 
-.header{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+.header {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .times {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 35px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 35px;
 }
-.header__title{
-    margin: 0;
+.header__title {
+  margin: 0;
 }
-.inputGame{
-    width: 212px;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    padding: 6px 10px;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+.inputGame {
+  width: 212px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  padding: 6px 10px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.startGame{
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 10px;
+.startGame {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
 }
 .error {
-    margin: 0;
-    text-align: center;
-    color: red;
+  margin: 0;
+  text-align: center;
+  color: red;
 }
 
 .audio {
-    font-size: 35px;
-    position: absolute;
-    top: 16px;
-    left: 773px;
-    cursor: pointer;
+  font-size: 35px;
+  position: absolute;
+  top: 16px;
+  left: 773px;
+  cursor: pointer;
 }
 
 .gameContainer {
-    height: 94vh;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+  height: 94vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .container {
-    display: flex;
-    width: 1450px;
-    height: 570px;
-    justify-content: space-between;
+  display: flex;
+  width: 1450px;
+  height: 570px;
+  justify-content: space-between;
 }
 
-.DataEnglish{
-    height: 600px; width: 680px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    list-style: none;
-    align-items: flex-start;
-    transition: all ease 0.3s;
+.DataEnglish {
+  height: 600px;
+  width: 680px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  list-style: none;
+  align-items: flex-start;
+  transition: all ease 0.3s;
 }
 
-.DataVietnamese{
-    height: 600px; width: 680px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    list-style: none;
-    align-items: flex-end;
-    transition: all ease 0.3s;
+.DataVietnamese {
+  height: 600px;
+  width: 680px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  list-style: none;
+  align-items: flex-end;
+  transition: all ease 0.3s;
 }
 
-.Data__item--btn{
-    width: 150px;
-    height: 85px;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    border: none;
-    margin: 10px 10px;
-    background-image: linear-gradient(90deg, #c0c0aa, #1cefff);
-    opacity: 0.93;
-    cursor: pointer;
-    box-shadow: 1px 0 2px #1cefff;
-    border-radius: 10px;
-    transition: all ease .3s;
-    font-size: 18px;
-    position: relative;
+.Data__item--btn {
+  width: 150px;
+  height: 85px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  border: none;
+  margin: 10px 10px;
+  background-image: linear-gradient(90deg, #c0c0aa, #1cefff);
+  opacity: 0.93;
+  cursor: pointer;
+  box-shadow: 1px 0 2px #1cefff;
+  border-radius: 10px;
+  transition: all ease 0.3s;
+  font-size: 18px;
+  position: relative;
 }
 
 .Data__item--btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 1px 0 10px  #1cefff;
-    opacity: 1;
+  transform: translateY(-3px);
+  box-shadow: 1px 0 10px #1cefff;
+  opacity: 1;
 }
 
 .active {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .actions__won {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    font-size: 70px;
-    z-index: 4;
-    color: #fff;
-    opacity: 0;
-    transition: all ease 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  font-size: 70px;
+  z-index: 4;
+  color: #fff;
+  opacity: 0;
+  transition: all ease 0.3s;
 }
 
 .actions__won button {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .Data__item--btn.active:hover {
-    transform: none;
-    box-shadow: 1px 0 2px  #1cefff;
-    opacity: 0.7;
+  transform: none;
+  box-shadow: 1px 0 2px #1cefff;
+  opacity: 0.7;
 }
 
 .checkTrue {
-    color: rgb(1, 255, 1);
-    font-size: 90px;
-    top: -3px;
-    left: 34px;
-    position: absolute !important;
-    z-index: -1;
-    opacity: 0.9 !important;
+  color: rgb(1, 255, 1);
+  font-size: 90px;
+  top: -3px;
+  left: 34px;
+  position: absolute !important;
+  z-index: -1;
+  opacity: 0.9 !important;
 }
 
-.Data__item--btn:disabled{
-    transform: none;
-    box-shadow: 1px 0 2px  #1cefff;
-    opacity: 0.7;
-    cursor: no-drop;
+.Data__item--btn:disabled {
+  transform: none;
+  box-shadow: 1px 0 2px #1cefff;
+  opacity: 0.7;
+  cursor: no-drop;
 }
-
