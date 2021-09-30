@@ -80,38 +80,54 @@ const EnglishDataShuffle = shuffle(englishData);
 const VietnameseDataShuffle = shuffle(vietnameseData);
 
 const input = $("input");
-input[0].addEventListener("change", (e) => {
+$(".startGame")[0].innerHTML = "Random";
+input[0].addEventListener("input", (e) => {
   let valueInput = parseInt(e.target.value); //giá trị người dùng nhập
   state.inputValue = valueInput;
-  if (((valueInput < 4 || valueInput > 20) && valueInput !== "") || isNaN(valueInput) == true) {
+  if ((valueInput < 4 || valueInput > 20) && valueInput !== "") {
     $(".error")[0].innerHTML = "Min: 4; Max: 20";
+    $(".startGame")[0].setAttribute("disabled", "true");
+  } else if (isNaN(valueInput) == true) {
+    $(".startGame")[0].removeAttribute("disabled");
+    $(".startGame")[0].innerHTML = "Random";
+    $(".error")[0].innerHTML = "";
   } else {
+    $(".startGame")[0].removeAttribute("disabled");
+    $(".startGame")[0].innerHTML = "Start Game";
     $(".error")[0].innerHTML = "";
   }
 });
 
 $(".startGame")[0].addEventListener("click", () => {
-  console.log(typeof state.inputValue);
-  if (((state.inputValue < 4 || state.inputValue > 20) && state.inputValue !== "") || isNaN(state.inputValue) == true) {
+  if ((state.inputValue < 4 || state.inputValue > 20) && state.inputValue !== "") {
     $(".error")[0].innerHTML = "Min: 4; Max: 20";
+  } else if (isNaN(state.inputValue) == true) {
+    state.inputValue = Math.floor(Math.random() * 20) + 4;
+    cutData();
   } else {
-    console.log(isNaN(state.inputValue));
-    if (state.inputValue == "") state.inputValue = Math.floor(Math.random() * 20) + 4;
-    let newEnglishData = EnglishDataShuffle.splice(1, state.inputValue);
-    state.newEnglishData = newEnglishData;
-    let getVietnameseDataLikeEnglish = []; // tìm kiếm các key tiếng việt dựa trên key tiếng anh đã lấy
-    for (let i in newEnglishData) {
-      for (let j in VietnameseDataShuffle) {
-        if (newEnglishData[i].key == VietnameseDataShuffle[j].key) {
-          getVietnameseDataLikeEnglish.push(VietnameseDataShuffle[j]);
-        }
-      }
+    if (state.inputValue == "") {
+      state.inputValue = Math.floor(Math.random() * 20) + 4;
     }
-    let newVietnameseData = shuffle(getVietnameseDataLikeEnglish);
-    state.newVietnameseData = newVietnameseData;
-    start();
+    cutData();
   }
 });
+
+const cutData = () => {
+  // cắt data theo từng trường hợp
+  let newEnglishData = EnglishDataShuffle.splice(1, state.inputValue);
+  state.newEnglishData = newEnglishData;
+  let getVietnameseDataLikeEnglish = []; // tìm kiếm các key tiếng việt dựa trên key tiếng anh đã lấy
+  for (let i in newEnglishData) {
+    for (let j in VietnameseDataShuffle) {
+      if (newEnglishData[i].key == VietnameseDataShuffle[j].key) {
+        getVietnameseDataLikeEnglish.push(VietnameseDataShuffle[j]);
+      }
+    }
+  }
+  let newVietnameseData = shuffle(getVietnameseDataLikeEnglish);
+  state.newVietnameseData = newVietnameseData;
+  start();
+};
 
 const start = () => {
   //khơi chạy
