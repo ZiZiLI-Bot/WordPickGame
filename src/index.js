@@ -102,13 +102,14 @@ $(".startGame")[0].addEventListener("click", () => {
   if ((state.inputValue < 4 || state.inputValue > 20) && state.inputValue !== "") {
     $(".error")[0].innerHTML = "Min: 4; Max: 20";
   } else if (isNaN(state.inputValue) == true) {
-    state.inputValue = Math.floor(Math.random() * 20) + 4;
+    state.inputValue = Math.floor(Math.random() * 16) + 4;
     cutData();
   } else {
     if (state.inputValue == "") {
-      state.inputValue = Math.floor(Math.random() * 20) + 4;
+      // trường hợp người dùng ko nhập
+      state.inputValue = Math.floor(Math.random() * 16) + 4;
     }
-    cutData();
+    cutData(); // trường hợp nhập chuẩn dữ liệu
   }
 });
 
